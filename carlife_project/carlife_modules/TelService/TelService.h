@@ -1,0 +1,4 @@
+#ifndef TELSERVICE_H
+#define TELSERVICE_H
+
+#endif //TELSERVICE_H

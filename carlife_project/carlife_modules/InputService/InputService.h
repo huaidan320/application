@@ -1,0 +1,4 @@
+#ifndef INPUTSERVICE_H
+#define INPUTSERVICE_H
+
+#endif //INPUTSERVICE_H
