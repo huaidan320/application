@@ -14,18 +14,38 @@
 
 using namespace CCarLifeLibH;
 
-RESULT_TYPE CarlifeInit(sCarlifeInfo *info, sCarlifeDelegate Delegate)
+RESULT_TYPE CarlifeInit(sCarlifeInfo *info, sCarlifeDelegate *elegate)
 {
-	CL_UNUSED(info);
-	CL_UNUSED(Delegate);
+    if(info != NULL)
+    {
+        //TODO: register carlifeinfo
+    }
+    //else default
+
+    if((elegate->AudioAcquire_f == NULL) || (elegate->AudioRelease_f == NULL) ||
+            (elegate->DuckAudio_f == NULL) || (elegate->UnDuckAudio_f == NULL) ||
+            (elegate->VideoAcquire_f == NULL) || (elegate->VideoRelease_f == NULL))
+    {
+        log_err("carlife init Delegate failed");
+        return RESULT_TYPE_FAILED;
+    }
+    else
+    {
+        //TODO: register modules callback
+
+    }
+
 	return RESULT_TYPE_SUCCESS;
 }
 
 RESULT_TYPE CarlifeStart(CompletionFunc callback)
 {
-	CL_UNUSED(callback);
-	
-	STATE_CHANGE_RESULT ret;
+    STATE_CHANGE_RESULT ret;
+
+    if(callback == NULL)
+    {
+        //return RESULT_TYPE_FAILED;
+    }
 	
 	ret = updateSessionState(SESSION_STATE_CONNECTING);
 	if(ret != STATE_CHANGE_SUCCESS)
@@ -95,14 +115,14 @@ RESULT_TYPE CarlifeTouch(int x, int y, int action)
 
     if(action == 0)
     {
-    click.x = x * 768 / 1600;
-    click.y = y;
+        click.x = x * 768 / 1600;
+        click.y = y;
 
-    if(CCarLifeLib::getInstance()->ctrlTouchSigleClick(&click) != 0)
-    {
-        log_err("ctrlTouchActionUp failed");
-        return RESULT_TYPE_FAILED;
-    }
+        if(CCarLifeLib::getInstance()->ctrlTouchSigleClick(&click) != 0)
+        {
+            log_err("ctrlTouchActionUp failed");
+            return RESULT_TYPE_FAILED;
+        }
     }
 
 	return RESULT_TYPE_SUCCESS;

@@ -1,16 +1,15 @@
 #include <pthread.h>
-#include "vpudecodec.h"
-#include "vpudec_sdk.h"
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include "vpudecodec.h"
+#include "vpudec_sdk.h"
 
 static pthread_t decoder_handle;
 static vpu_decode_t *vpu_dec;
 
-int vpu_player_dbg_level = 6;
+int vpu_player_dbg_level = 2;
 
 static void *thread_decoder_start(void *arg)
 {

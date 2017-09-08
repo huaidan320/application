@@ -43,7 +43,7 @@ extern int vpu_player_dbg_level;
     printf("[WARN]\t" fmt, ## arg);	\
     } while (0)
 
-#define DEBUG dprintf(7, "< %s >\n\n", __func__);
+#define DEBUG dprintf(3, "< %s >\n\n", __func__);
 
 
 //#define __TEST_VPU_DEC__

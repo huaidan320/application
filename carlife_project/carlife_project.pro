@@ -9,34 +9,35 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = app
 TARGET = carlife_test
 
-DESTDIR = bin
 #CONFIG -= qt
-CONFIG += debug
+#CONFIG += debug
 
+DESTDIR = bin
 RCC_DIR += tmp
 MOC_DIR += tmp
 OBJECTS_DIR += tmp
 
-#qt
-INCLUDEPATH += ./mcarlife_test
+#circle buffer
+INCLUDEPATH += ./circle_buffer
 
-INCLUDEPATH += ./circlue_buffer
-INCLUDEPATH += ./vpuPlayer
-INCLUDEPATH += ./vpuPlayer/src
-INCLUDEPATH += ./vpuPlayer/include
+#vpu player
+INCLUDEPATH += ./vpu_player
+INCLUDEPATH += ./vpu_player/include
+INCLUDEPATH += ./vpu_player/include/linux
 
-INCLUDEPATH +=  ./Manager/CarlifeMgr \
-                ./Manager/Common \
-                ./Manager/InputService \
-                ./Manager/MediaService \
-                ./Manager/MessageService \
-                ./Manager/NaviService \
-                ./Manager/ScreenService \
-                ./Manager/SessionMgr \
-                ./Manager/TelService \
-                ./Manager/VrService
+#carlife mofules
+INCLUDEPATH +=  ./carlife_modules/CarlifeMgr \
+                ./carlife_modules/Common \
+                ./carlife_modules/InputService \
+                ./carlife_modules/MediaService \
+                ./carlife_modules/MessageService \
+                ./carlife_modules/NaviService \
+                ./carlife_modules/ScreenService \
+                ./carlife_modules/SessionMgr \
+                ./carlife_modules/TelService \
+                ./carlife_modules/VrService
 
-#carlife
+#carlife source
 INCLUDEPATH += /home/imx6-solo/sdk/carlife/include
 
 #vpu
@@ -57,51 +58,51 @@ QMAKE_CXXFLAGS += -g
 QMAKE_CFLAGS += -g
 
 # Input
-HEADERS += Manager/CarlifeMgr/Carlife.h \
-           Manager/Common/CarlifeCommonType.h \
-           Manager/Common/CarlifeDebug.h \
-           Manager/InputService/InputCb.h \
-           Manager/InputService/InputService.h \
-           Manager/MediaService/MediaCb.h \
-           Manager/MediaService/MediaService.h \
-           Manager/MessageService/MessageService.h \
-           Manager/NaviService/NaviCb.h \
-           Manager/NaviService/NaviService.h \
-           Manager/ScreenService/ScreenCb.h \
-           Manager/ScreenService/ScreenService.h \
-           Manager/SessionMgr/SessionCb.h \
-           Manager/SessionMgr/SessionMgr.h \
-           Manager/TelService/TelCb.h \
-           Manager/TelService/TelService.h \
-           Manager/VrService/VrCb.h \
-           Manager/VrService/VrService.h \
-           circlue_buffer/circle_buffer.h \
-           circlue_buffer/lcthw/bstrlib.h \
-           circlue_buffer/lcthw/dbg.h \
-           circlue_buffer/lcthw/ringbuffer.h \
-           vpuPlayer/vpudec_sdk.h \
-           vpuPlayer/include/vpu_io.h \
-           vpuPlayer/include/vpu_lib.h \
-           vpuPlayer/include/linux/ipu.h \
-           vpuPlayer/include/linux/mxcfb.h \
-           vpuPlayer/src/v4ldisplay.h \
-           vpuPlayer/src/vpudecodec.h \
-           vpuPlayer/src/vpuplayer_config.h \
-    mcarlife_test/mcarlifedlg.h
-SOURCES += Test/carlife_test.cpp \
-           Manager/CarlifeMgr/Carlife.cpp \
-           Manager/InputService/InputService.cpp \
-           Manager/MediaService/MediaService.cpp \
-           Manager/MessageService/MessageService.cpp \
-           Manager/NaviService/NaviService.cpp \
-           Manager/ScreenService/ScreenService.cpp \
-           Manager/SessionMgr/SessionMgr.cpp \
-           Manager/TelService/TelService.cpp \
-           Manager/VrService/VrService.cpp \
-           circlue_buffer/circle_buffer.c \
-           circlue_buffer/lcthw/bstrlib.c \
-           circlue_buffer/lcthw/ringbuffer.c \
-           vpuPlayer/vpudec_sdk.c \
-           vpuPlayer/src/v4ldisplay.c \
-           vpuPlayer/src/vpudecodec.c \
-    mcarlife_test/mcarlifedlg.cpp
+HEADERS += carlife_test/mcarlifedlg.h \
+           circle_buffer/circle_buffer.h \
+           vpu_player/vpudec_sdk.h \
+           carlife_modules/CarlifeMgr/Carlife.h \
+           carlife_modules/Common/CarlifeCommonType.h \
+           carlife_modules/Common/CarlifeDebug.h \
+           carlife_modules/InputService/InputCb.h \
+           carlife_modules/InputService/InputService.h \
+           carlife_modules/MediaService/MediaCb.h \
+           carlife_modules/MediaService/MediaService.h \
+           carlife_modules/MessageService/MessageService.h \
+           carlife_modules/NaviService/NaviCb.h \
+           carlife_modules/NaviService/NaviService.h \
+           carlife_modules/ScreenService/ScreenCb.h \
+           carlife_modules/ScreenService/ScreenService.h \
+           carlife_modules/SessionMgr/SessionCb.h \
+           carlife_modules/SessionMgr/SessionMgr.h \
+           carlife_modules/TelService/TelCb.h \
+           carlife_modules/TelService/TelService.h \
+           carlife_modules/VrService/VrCb.h \
+           carlife_modules/VrService/VrService.h \
+           circle_buffer/lcthw/bstrlib.h \
+           circle_buffer/lcthw/dbg.h \
+           circle_buffer/lcthw/ringbuffer.h \
+           vpu_player/include/v4ldisplay.h \
+           vpu_player/include/vpudecodec.h \
+           vpu_player/include/vpuplayer_config.h \
+           vpu_player/include/linux/ipu.h \
+           vpu_player/include/linux/mxcfb.h \
+           vpu_player/include/linux/vpu_io.h \
+           vpu_player/include/linux/vpu_lib.h
+SOURCES += carlife_test/carlife_test.cpp \
+           carlife_test/mcarlifedlg.cpp \
+           circle_buffer/circle_buffer.c \
+           vpu_player/vpudec_sdk.c \
+           carlife_modules/CarlifeMgr/Carlife.cpp \
+           carlife_modules/InputService/InputService.cpp \
+           carlife_modules/MediaService/MediaService.cpp \
+           carlife_modules/MessageService/MessageService.cpp \
+           carlife_modules/NaviService/NaviService.cpp \
+           carlife_modules/ScreenService/ScreenService.cpp \
+           carlife_modules/SessionMgr/SessionMgr.cpp \
+           carlife_modules/TelService/TelService.cpp \
+           carlife_modules/VrService/VrService.cpp \
+           circle_buffer/lcthw/bstrlib.c \
+           circle_buffer/lcthw/ringbuffer.c \
+           vpu_player/src/v4ldisplay.c \
+           vpu_player/src/vpudecodec.c

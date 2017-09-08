@@ -177,6 +177,8 @@ STATE_CHANGE_RESULT updateSessionState(SESSION_STATE next_state)
                 session_state = next_state;
                 //TODO Start timer for checking connection timeout
 				//TODO start adapter.
+                //TODO adapter aoa connect success
+
 				if(0 != startCarlifeConnection())
 				{
 					log_err("Carlife Connection start failed");
@@ -194,13 +196,13 @@ STATE_CHANGE_RESULT updateSessionState(SESSION_STATE next_state)
 			{
                 session_state = next_state;
 
+                //TODO call start connected callback();
+
 				if(update_screen_state(SCREEN_STATE_INIT) != STATE_CHANGE_SUCCESS)
 				{
 					//TODO stop carlife
 					log_err("update_screen_state failed");
 				}
-
-                //TODO call startcallback();
 
                 //TODO Start timer for sending video heartbeat to MD
 

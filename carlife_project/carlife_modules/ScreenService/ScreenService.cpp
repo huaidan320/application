@@ -18,8 +18,8 @@ void videoDataReceive(u8 *data, u32 len)
 {	
 	write_circle_buffer((char *)data, (int)len);
 	
-	cout<<"videoDataReceive() is invoked"<<endl;
-	cout<<"\treceive video data: "<<len<<" bytes"<<endl;
+//	cout<<"videoDataReceive() is invoked"<<endl;
+//	cout<<"\treceive video data: "<<len<<" bytes"<<endl;
 }
 
 void videoHeartBeat(void)
@@ -34,6 +34,8 @@ void cmdVideoEncoderInitDone(S_VIDEO_ENCODER_INIT_DONE *videoEncoderInitDone)
 	cout<<"\twidth: "<<videoEncoderInitDone->width<<endl;
 	cout<<"\theight: "<<videoEncoderInitDone->height<<endl;
 	cout<<"\tframeRate: "<<videoEncoderInitDone->frameRate<<endl;
+
+    //TODO callbck size
 
 	if(update_screen_state(SCREEN_STATE_READY) != STATE_CHANGE_SUCCESS)
 	{

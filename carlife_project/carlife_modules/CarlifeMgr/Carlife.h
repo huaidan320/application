@@ -73,7 +73,7 @@ typedef struct {
 	ScreenReleaseFunc	VideoRelease_f;
 }sCarlifeDelegate;
 
-extern RESULT_TYPE CarlifeInit(sCarlifeInfo *info, sCarlifeDelegate Delegate);
+extern RESULT_TYPE CarlifeInit(sCarlifeInfo *info, sCarlifeDelegate *Delegate);
 extern RESULT_TYPE CarlifeStart(CompletionFunc callback);
 extern RESULT_TYPE CarlifeStop();
 extern RESULT_TYPE CarlifeDstory();

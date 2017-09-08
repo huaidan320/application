@@ -1,7 +1,6 @@
 #include "mcarlifedlg.h"
 #include <QPainter>
 #include <QDebug>
-//#include "mtexttipwidget.h"
 
 #ifdef __ARM_CAMERA_SDK__
 #include "cameracmd.h"
@@ -22,7 +21,6 @@ MCarLifeDlg::MCarLifeDlg()
 #ifdef __ARM_VOLUME_SDK__
     m_volume = CVolume::Instance();
 #endif
-
 }
 
 MCarLifeDlg::~MCarLifeDlg()
@@ -147,7 +145,7 @@ void MCarLifeDlg::showBtnView()
 
 }
 
-#include <Carlife.h>
+#include "Carlife.h"
 
 void MCarLifeDlg::mousePressEvent(QMouseEvent *e)
 {
@@ -165,6 +163,7 @@ void MCarLifeDlg::mousePressEvent(QMouseEvent *e)
 void MCarLifeDlg::mouseReleaseEvent(QMouseEvent *e)
 {
     e=e;
+
     qDebug("relese is (%d, %d).", e->pos().x(), e->pos().y());
 
     CarlifeTouch(e->pos().x(), e->pos().y(), 1);

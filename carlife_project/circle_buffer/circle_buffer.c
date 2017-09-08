@@ -1,4 +1,4 @@
-#define NDEBUG
+//#define NDEBUG
 
 #include <lcthw/ringbuffer.h>
 #include <lcthw/dbg.h>
@@ -47,11 +47,11 @@ CIRCLE_RET_NUM write_circle_buffer(char *data, int length)
 {
     int rc;
 
-    //if(RingBuffer_available_space(buffer) < length)
-    //{
-    //    debug("Wait for read.");
-    //    return CIRCLE_RET_WAIT;
-    //}
+    if(RingBuffer_available_space(buffer) < length)
+    {
+        debug("Wait for read.");
+        return CIRCLE_RET_WAIT;
+    }
     
     rc = RingBuffer_write(buffer, data, length);
     if(rc != length)

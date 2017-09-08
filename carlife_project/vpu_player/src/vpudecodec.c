@@ -69,20 +69,9 @@ static int vpu_read(vpu_decode_t *dec, char *buf, int n)
        do
        {
             ret_num = read_circle_buffer(buf, n);
-            //sleep(1);         
        }while(ret_num == CIRCLE_RET_WAIT);
-       
-        //if(ret_num == CIRCLE_RET_FAILED)
-        //{
-        //    err_msg("read_circle_buffer failed\n");
-        //    ret_num = CIRCLE_RET_WAIT;
-        //        
-        //    return -1;
-        //}
 
-        //ret_num = CIRCLE_RET_WAIT;
-        
-        return n;
+       return n;
     }
 }
 
